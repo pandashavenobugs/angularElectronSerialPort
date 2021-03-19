@@ -1,3 +1,69 @@
+# To use  Serial port in angular
+
+* installing the requirements
+```bash
+npm install electron@11 --save
+npm install  electron-rebuild --save-dev
+npm install serialport --save
+npm install @types/serialport --save-dev
+npm install @types/node --save-dev
+```
+* if we use serial port with electron we have to rebuild the electron. run this command
+
+```bash
+./node_modules/.bin/electron-rebuild
+```
+
+* to  added custom webpack  to load serialport 
+
+```bash
+npm i @angular-builders/custom-webpack
+npm i @angular-builders/dev-server
+npm i @angular-devkit/build-angular
+```
+
+* changes in angular.json
+
+```json
+"architect": {
+    "build": {
+      "builder": "@angular-builders/custom-webpack:browser",
+      "options": {
+        "customWebpackConfig": {"path": "./custom-webpack.config.js"},
+...
+"serve": {
+      "builder": "@angular-builders/dev-server:generic",
+```
+
+* creating custom-webpack.config.js
+
+```bash
+module.exports = {
+  "externals": {
+    "serialport": "require('serialport')"
+  }
+}
+```
+
+* and ready to go !
+
+**note:**
+* when we start the app console throw us a renderer error. to solve this we added this line in main.js
+
+```javascript
+app.allowRendererProcessReuse = false
+
+```
+# to run the app 
+```bash
+npm run electron-build
+```
+
+# my resources
+* https://www.sitepoint.com/build-a-desktop-application-with-electron-and-angular/
+* https://github.com/serialport/node-serialport/issues/1975
+* https://stackoverflow.com/questions/60106922/electron-non-context-aware-native-module-in-renderer
+
 # SerialTest
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
