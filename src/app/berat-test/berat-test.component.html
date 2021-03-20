@@ -1,6 +1,14 @@
-<p>berat-test works!</p>
+<!-- <p>berat-test works!</p>
 <select [(ngModel)]="port" *ngIf="this.ports.length>0">
   <option *ngFor="let port of ports" [ngValue]="port">{{port.path}}</option>
-</select>
+</select> -->
+
+
+
+<mat-select placeholder="system select" [(ngModel)]="port" *ngIf="this.ports.length>0">
+  <mat-option *ngFor="let port of ports" [value]="port">
+    {{port.path}}
+  </mat-option>
+</mat-select>
 
 <p *ngIf="port">{{port.path}}</p>

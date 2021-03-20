@@ -47,6 +47,32 @@ module.exports = {
 
 * and ready to go !
 
+# installing angular material into project
+
+* ng add @angular/material doesnt work due to custom custom-webpack
+* then we install material manually
+```bash
+npm install --save @angular/material @angular/cdk @angular/animations
+```
+
+* after that we config the styles.css file
+
+```css
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+/* background-color: black; */
+ }
+
+```
+* and index.html
+
+```html
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+```
+
 **note:**
 * when we start the app console throw us a renderer error. to solve this we added this line in main.js
 
