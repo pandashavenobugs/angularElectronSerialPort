@@ -1,1 +1,6 @@
 <p>berat-test works!</p>
+<select [(ngModel)]="port" *ngIf="this.ports.length>0">
+  <option *ngFor="let port of ports" [ngValue]="port">{{port.path}}</option>
+</select>
+
+<p *ngIf="port">{{port.path}}</p>

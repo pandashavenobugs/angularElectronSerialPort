@@ -7,7 +7,8 @@ import * as SerialPort from "serialport"
   styleUrls: ['./berat-test.component.css']
 })
 export class BeratTestComponent implements OnInit {
-
+  ports:any=[];
+  port:any;
   constructor() { }
 
   ngOnInit(): void {
@@ -16,7 +17,9 @@ export class BeratTestComponent implements OnInit {
 
   async getData(){
     const ports = await SerialPort.list();
-    console.log('Available SerialPorts: ', ports);
+    this.ports = ports.filter(element=> element.vendorId);
+    //console.log('Available SerialPorts: ', ports);
+    console.log(this.ports);
   }
 
 }
