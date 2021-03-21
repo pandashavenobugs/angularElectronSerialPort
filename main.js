@@ -8,7 +8,7 @@ const {app, BrowserWindow} = require('electron')
       mainWindow = new BrowserWindow({
         width: 850,
         height: 650,
-        // resizable:false,
+        resizable:false, // to disable maximize and minimaze
         webPreferences: {
           nodeIntegration: true
         }
