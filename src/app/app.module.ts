@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { BeratTestComponent } from './berat-test/berat-test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button'
+
 
 @NgModule({
   declarations: [
@@ -15,7 +18,9 @@ import {MatSelectModule} from '@angular/material/select';
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatFormFieldModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

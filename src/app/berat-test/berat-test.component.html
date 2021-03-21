@@ -5,10 +5,25 @@
 
 
 
-<mat-select placeholder="system select" [(ngModel)]="port" *ngIf="this.ports.length>0">
+<!-- <mat-select placeholder="system select" [(ngModel)]="port" *ngIf="this.ports.length>0">
   <mat-option *ngFor="let port of ports" [value]="port">
     {{port.path}}
   </mat-option>
 </mat-select>
 
-<p *ngIf="port">{{port.path}}</p>
+<p *ngIf="port">{{port.path}}</p> -->
+
+
+<div class="programBase">
+  <div class="contentBase">
+    <mat-form-field class="select">
+      <mat-label>Serial Port Seciniz</mat-label>
+      <mat-select placeholder="system select" [(ngModel)]="portPath">
+        <mat-option *ngFor="let port of ports" [value]="port.path">
+          {{port.path}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button  (click)="sendData()" mat-button>Gonder</button>
+  </div>
+</div>

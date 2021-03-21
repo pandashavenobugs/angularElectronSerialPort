@@ -8,7 +8,9 @@ import * as SerialPort from "serialport"
 })
 export class BeratTestComponent implements OnInit {
   ports:any=[];
-  port:any;
+  // baudRate =115200
+  baudRate=9600;
+  portPath:string;
   constructor() { }
 
   ngOnInit(): void {
@@ -20,6 +22,22 @@ export class BeratTestComponent implements OnInit {
     this.ports = ports.filter(element=> element.vendorId);
     //console.log('Available SerialPorts: ', ports);
     console.log(this.ports);
+  }
+
+  sendData(){
+    if(this.portPath){
+      const connectionPort = new SerialPort(this.portPath,{
+        baudRate:this.baudRate
+      })
+      connectionPort.write('can you hear me ?',(err)=>{
+        if(err){
+          console.log(err)
+        }
+        connectionPort.close()
+      });
+
+    }
+
   }
 
 }
