@@ -16,7 +16,7 @@ npm install @types/node --save-dev
 ./node_modules/.bin/electron-rebuild
 ```
 
-**_Note:_** rebuild process could throw us. to fix this, install build-essential
+**_Note:_** rebuild process could throw us an error. to fix this, install build-essential
 
 ```bash
 sudo apt-get update
