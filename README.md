@@ -1,6 +1,7 @@
-# To use  Serial port in angular
+# To use Serial port in angular
 
-* installing the requirements
+- installing the requirements
+
 ```bash
 npm install electron@11 --save
 npm install  electron-rebuild --save-dev
@@ -8,13 +9,24 @@ npm install serialport --save
 npm install @types/serialport --save-dev
 npm install @types/node --save-dev
 ```
-* if we use serial port with electron we have to rebuild the electron. run this command
+
+- if we use serial port with electron we have to rebuild the electron. run this command
 
 ```bash
 ./node_modules/.bin/electron-rebuild
 ```
 
-* to  added custom webpack  to load serialport 
+**_Note:_** rebuild process could throw us. to fix this, install build-essential
+
+```bash
+sudo apt-get update
+
+sudo apt-get install build-essential
+
+sudo apt-get upgrade
+```
+
+- to added custom webpack to load serialport
 
 ```bash
 npm i @angular-builders/custom-webpack
@@ -22,7 +34,7 @@ npm i @angular-builders/dev-server
 npm i @angular-devkit/build-angular
 ```
 
-* changes in angular.json
+- changes in angular.json
 
 ```json
 "architect": {
@@ -35,7 +47,7 @@ npm i @angular-devkit/build-angular
       "builder": "@angular-builders/dev-server:generic",
 ```
 
-* creating custom-webpack.config.js
+- creating custom-webpack.config.js
 
 ```bash
 module.exports = {
@@ -45,50 +57,65 @@ module.exports = {
 }
 ```
 
-* and ready to go !
+- and ready to go !
 
 # installing angular material into project
 
-* ng add @angular/material doesnt work due to custom custom-webpack
-* then we install material manually
+- ng add @angular/material doesnt work due to custom custom-webpack
+- then we install material manually
+
 ```bash
 npm install --save @angular/material @angular/cdk @angular/animations
 ```
 
-* after that we config the styles.css file
+- after that we config the styles.css file
 
 ```css
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-/* background-color: black; */
- }
-
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  /* background-color: black; */
+}
 ```
-* and index.html
+
+- and index.html
 
 ```html
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+  rel="stylesheet"
+/>
+<link
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  rel="stylesheet"
+/>
 ```
 
 **note:**
-* when we start the app console throw us a renderer error. to solve this we added this line in main.js
+
+- when we start the app console throw us a renderer error. to solve this we added this line in main.js
 
 ```javascript
-app.allowRendererProcessReuse = false
-
+app.allowRendererProcessReuse = false;
 ```
-# to run the app 
+
+# to run the app
+
 ```bash
 npm run electron-build
 ```
 
 # my resources
-* https://www.sitepoint.com/build-a-desktop-application-with-electron-and-angular/
-* https://github.com/serialport/node-serialport/issues/1975
-* https://stackoverflow.com/questions/60106922/electron-non-context-aware-native-module-in-renderer
+
+- https://www.sitepoint.com/build-a-desktop-application-with-electron-and-angular/
+- https://github.com/serialport/node-serialport/issues/1975
+- https://stackoverflow.com/questions/60106922/electron-non-context-aware-native-module-in-renderer
 
 # SerialTest
 
